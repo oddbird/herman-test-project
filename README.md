@@ -1,2 +1,4 @@
 # herman-test-project
-a test project for sassdoc-theme-herman
+
+A test project for
+[sassdoc-theme-herman](https://github.com/oddbird/sassdoc-theme-herman/).

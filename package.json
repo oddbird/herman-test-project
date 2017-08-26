@@ -1,0 +1,29 @@
+{
+  "name": "herman-test-project",
+  "version": "0.1.0",
+  "description": "a test project for sassdoc-theme-herman",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oddbird/herman-test-project.git"
+  },
+  "author": "oddbird <birds@oddbird.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oddbird/herman-test-project/issues"
+  },
+  "homepage": "https://github.com/oddbird/herman-test-project#readme",
+  "dependencies": {
+    "accoutrement-color": "^2.1.1",
+    "accoutrement-scale": "^3.2.0",
+    "accoutrement-type": "^2.1.0",
+    "autoprefixer": "^7.1.2",
+    "mathsass": "^0.10.1",
+    "sass-json-export": "^2.0.0",
+    "sassdoc": "^2.3.0",
+    "sassdoc-theme-herman": "^1.0.0-alpha.9"
+  }
+}
