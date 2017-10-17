@@ -1,5 +1,6 @@
 'use strict';
 
+const browserSync = require('browser-sync').create();
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sassdoc = require('sassdoc');
@@ -52,7 +53,9 @@ gulp.task('compile', ['sass'], () => {
       },
       customCSS: `${paths.DIST_DIR}css/main.css`,
       customHead:
-        '<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">',
+        '<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">' +
+        '<script src="https://use.typekit.net/slx1xnq.js"></script>' +
+        '<script>try{Typekit.load({ async: true });}catch(e){}</script>',
     },
     display: {
       alias: true,
@@ -64,4 +67,28 @@ gulp.task('compile', ['sass'], () => {
     .pipe(sassdoc(config));
 });
 
+gulp.task('browser-sync', ['compile'], cb => {
+  browserSync.init(
+    {
+      open: false,
+      server: {
+        baseDir: paths.DOCS_DIR,
+      },
+      logLevel: 'info',
+      logPrefix: 'herman-test',
+      notify: false,
+      ghostMode: false,
+      files: [`${paths.DOCS_DIR}**/*`],
+      reloadDelay: 300,
+      reloadThrottle: 500,
+      // Because we're debouncing, we always want to reload the page to prevent
+      // a case where the CSS change is detected first (and injected), and
+      // subsequent JS/HTML changes are ignored.
+      injectChanges: false,
+    },
+    cb
+  );
+});
+
 gulp.task('default', ['compile']);
+gulp.task('serve', ['browser-sync']);
