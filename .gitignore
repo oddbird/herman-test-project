@@ -1,4 +1,9 @@
 *.DS_Store
 *~
 .sass-cache/
-node_modules
+node_modules/
+npm-debug.log
+yarn-error.log
+*.orig
+*.css.map
+*.js.map
