@@ -54,6 +54,7 @@ $google-font: (
 ///
 /// - call the specimen preview directly
 /// - give a braketed list of formats, and a font-name on the first line
+/// - (could also override variants shown, but it would be rare)
 /// - no additional head
 /// - add a font-path global config option, similar to sass path options
 ///
