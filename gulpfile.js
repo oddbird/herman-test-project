@@ -40,7 +40,7 @@ gulp.task('compile', ['sass'], () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: './../herman/',
+    theme: 'herman',
     herman: {
       subprojects: [
         'accoutrement-color',
@@ -52,8 +52,7 @@ gulp.task('compile', ['sass'], () => {
       },
       customCSS: `${paths.DIST_DIR}css/main.css`,
       customHead:
-        '<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro' +
-        ':400,700|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">',
+        '<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">',
     },
     display: {
       alias: true,

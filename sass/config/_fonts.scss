@@ -13,7 +13,7 @@ $font-formats: 'woff2' 'woff' 'ttf';
 /// @preview font-specimen; key: typekit; show: regular, italic, bold, bold italic
 $typekit-font: (
   'name': 'freight-text-pro',
-  'stack': (Baskerville, Palatino, Cambria, Georgia, serif),
+  'stack': (fantasy, fantasy),
   'source': 'https://typekit.com/fonts/freight-text',
 );
 
@@ -28,9 +28,9 @@ $typekit-font: (
 /// @preview font-specimen; key: google; show: regular, bold, italic, bold italic
 /// @group fonts
 $google-font: (
-  'name': 'Source Sans Pro',
-  'source': 'https://fonts.google.com/specimen/Source+Sans+Pro',
-  'stack': ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif),
+  'name': 'Modak',
+  'source': 'https://fonts.google.com/specimen/Modak',
+  'stack': (fantasy, fantasy),
 );
 
 @include add-font('google', $google-font);
@@ -49,7 +49,7 @@ $local-font: (
   'bold': 'rockingham/rockingham-bold-webfont',
   'italic': 'rockingham/rockingham-italic-webfont',
   'bold' 'italic': 'rockingham/rockingham-bolditalic-webfont',
-  'stack': ('Helvetica Neue', Helvetica, Arial, sans-serif),
+  'stack': (fantasy, fantasy),
 );
 
 @include add-font('local', $local-font);
