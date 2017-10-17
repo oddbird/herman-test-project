@@ -51,6 +51,9 @@ gulp.task('compile', ['sass'], () => {
         jsonfile: `${paths.DIST_DIR}css/json.css`,
       },
       customCSS: `${paths.DIST_DIR}css/main.css`,
+      customHead:
+        '<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro' +
+        ':400,700|Source+Sans+Pro:400,400i,700,700i" rel="stylesheet">',
     },
     display: {
       alias: true,
