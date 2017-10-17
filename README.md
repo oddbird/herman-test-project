@@ -2,3 +2,5 @@
 
 A test project for
 [sassdoc-theme-herman](https://github.com/oddbird/sassdoc-theme-herman/).
+
+Run `gulp` to generate documentation.
