@@ -1,0 +1,56 @@
+// Fonts Config
+// ============
+
+
+$font-formats: 'woff2' 'woff' 'ttf';
+
+
+// TypeKit Font
+// ------------
+/// A font imported from typekit.
+///
+/// @group fonts
+/// @preview font-specimen; key: typekit; show: regular, italic, bold, bold italic
+$typekit-font: (
+  'name': 'freight-text-pro',
+  'stack': (Baskerville, Palatino, Cambria, Georgia, serif),
+  'source': 'https://typekit.com/fonts/freight-text',
+);
+
+@include add-font('typekit', $typekit-font);
+@include herman-add('font', 'typekit', $typekit-font);
+
+
+// Google Font
+// -----------
+/// A font imported from google fonts.
+///
+/// @preview font-specimen; key: google; show: regular, bold, italic, bold italic
+/// @group fonts
+$google-font: (
+  'name': 'Source Sans Pro',
+  'source': 'https://fonts.google.com/specimen/Source+Sans+Pro',
+  'stack': ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif),
+);
+
+@include add-font('google', $google-font);
+@include herman-add('font', 'google', $google-font);
+
+
+// Google Font
+// -----------
+/// A locally-hosted font.
+///
+/// @preview font-specimen; key: local
+/// @group fonts
+$local-font: (
+  'name': 'rockingham',
+  'regular': 'rockingham/rockingham-regular-webfont',
+  'bold': 'rockingham/rockingham-bold-webfont',
+  'italic': 'rockingham/rockingham-italic-webfont',
+  'bold' 'italic': 'rockingham/rockingham-bolditalic-webfont',
+  'stack': ('Helvetica Neue', Helvetica, Arial, sans-serif),
+);
+
+@include add-font('local', $local-font);
+@include herman-add('font', 'local', $local-font);

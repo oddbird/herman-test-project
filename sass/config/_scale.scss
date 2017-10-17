@@ -1,0 +1,35 @@
+// Scales
+// ======
+
+
+$ratio-fun: if(function-exists('get-function'), get-function('ratio'),'ratio');
+$size-fun: if(function-exists('get-function'), get-function('size'),'size');
+
+
+// Ratios
+// ------
+/// @group scale
+/// @preview ratios
+$text-scale: (
+  'text-ratio': 1.4,
+);
+
+$ratios: map-merge($ratios, $text-scale);
+@include herman-add('ratios', 'text-scale', $text-scale, $ratio-fun);
+
+
+// Text Sizes
+// ----------
+/// @group scale
+/// @preview sizes;
+$text-sizes: (
+  'root': 18px,
+  'small': 'root' ('text-ratio': -1),
+  'medium': 'root' ('text-ratio': 0.7),
+  'caption': 'root',
+  'task': 'root' ('text-ratio': -0.125),
+  'social': 'root' ('text-ratio': -0.25),
+);
+
+$sizes: map-merge($sizes, $text-sizes);
+@include herman-add('sizes', 'text-sizes', $text-sizes, $size-fun);

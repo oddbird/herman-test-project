@@ -40,16 +40,16 @@ gulp.task('compile', ['sass'], () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: 'herman',
+    theme: './../herman/',
     herman: {
       subprojects: [
         'accoutrement-color',
         'accoutrement-scale',
         'accoutrement-type',
       ],
-      // sass: {
-      //   jsonfile: `${paths.DIST_DIR}css/json.css`,
-      // },
+      sass: {
+        jsonfile: `${paths.DIST_DIR}css/json.css`,
+      },
       customCSS: `${paths.DIST_DIR}css/main.css`,
     },
     display: {

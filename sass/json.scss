@@ -2,5 +2,7 @@
 // ===================
 
 @import '../node_modules/sass-json-export/stylesheets/sass-json-export';
+@import 'config/manifest';
 
-// @include json-encode($herman, comment);
+
+@include json-encode($herman, comment);
