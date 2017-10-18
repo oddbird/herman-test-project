@@ -53,9 +53,9 @@ $google-font: (
 /// A locally-hosted font.
 ///
 /// - call the specimen preview directly
-/// - give a braketed list of formats, and a font-name on the first line
-/// - (could also override variants shown, but it would be rare)
-/// - no additional head
+/// - give a font-name and bracketed list of formats on the first line
+/// - optionally override variants with parenthetical list
+/// - no additional html head
 /// - add a font-path global config option, similar to sass path options
 ///
 /// @group fonts
