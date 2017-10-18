@@ -9,11 +9,17 @@ $font-formats: 'woff2' 'woff' 'ttf';
 // ------------
 /// A font imported from typekit.
 ///
+/// - call the specimen preview directly
+/// - give a font-name and parenthetical list of variants on the first line
+/// - suppy additional html head as a nested block
+///
 /// @group fonts
-/// @preview font-specimen; key: typekit; show: regular, italic, bold, bold italic
+/// @font 'typekit' (regular, italic, bold, bold italic)
+///   <script src="https://use.typekit.net/slx1xnq.js"></script>
+///   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 $typekit-font: (
   'name': 'freight-text-pro',
-  'stack': (fantasy, fantasy),
+  'stack': 'fantasy',
   'source': 'https://typekit.com/fonts/freight-text',
 );
 
@@ -25,12 +31,17 @@ $typekit-font: (
 // -----------
 /// A font imported from google fonts.
 ///
-/// @preview font-specimen; key: google; show: regular, bold, italic, bold italic
+/// - call the specimen preview directly
+/// - give a font-name and parenthetical list of variants on the first line
+/// - suppy additional html head as a nested block
+///
 /// @group fonts
+/// @font 'google' (regular, bold, italic, bold italic)
+///   <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
 $google-font: (
   'name': 'Modak',
   'source': 'https://fonts.google.com/specimen/Modak',
-  'stack': (fantasy, fantasy),
+  'stack': 'fantasy',
 );
 
 @include add-font('google', $google-font);
@@ -41,15 +52,21 @@ $google-font: (
 // -----------
 /// A locally-hosted font.
 ///
-/// @preview font-specimen; key: local
+/// - call the specimen preview directly
+/// - give a font-name and bracketed list of formats on the first line
+/// - optionally override variants with parenthetical list
+/// - no additional html head
+/// - add a font-path global config option, similar to sass path options
+///
 /// @group fonts
+/// @font 'local' {woff2, woff, ttf}
 $local-font: (
   'name': 'rockingham',
   'regular': 'rockingham/rockingham-regular-webfont',
   'bold': 'rockingham/rockingham-bold-webfont',
   'italic': 'rockingham/rockingham-italic-webfont',
   'bold' 'italic': 'rockingham/rockingham-bolditalic-webfont',
-  'stack': (fantasy, fantasy),
+  'stack': 'fantasy',
 );
 
 @include add-font('local', $local-font);
