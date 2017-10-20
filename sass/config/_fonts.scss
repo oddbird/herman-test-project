@@ -37,11 +37,11 @@ $typekit-font: (
 ///
 /// @group fonts
 /// @font 'google' (regular, bold, italic, bold italic)
-///   <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
+///   <link href="https://fonts.googleapis.com/css?family=Exo+2:400,400i,700,700i" rel="stylesheet">
 $google-font: (
-  'name': 'Modak',
-  'source': 'https://fonts.google.com/specimen/Modak',
-  'stack': 'fantasy',
+  'name': 'Exo 2',
+  'source': 'https://fonts.google.com/specimen/Exo+2',
+  'stack': ('arial', 'monospace', 'fantasy'),
 );
 
 @include add-font('google', $google-font);

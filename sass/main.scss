@@ -2,3 +2,25 @@
 // ====
 
 @import 'config/manifest';
+
+
+:root {
+  @include font-family('local');
+}
+
+
+// My Widget
+// ---------
+/// This is an example example, for seeing examples.
+/// @group examples
+/// @example html
+///   <div class="your-widget">This is YOUR Widget</div>
+///   <div class="my-widget">This is MY Widget</div>
+.my-widget {
+  @include font-family('google');
+  background: color('brand-blue') url('../images/wash.jpg') no-repeat;
+  color: contrast('brand-blue');
+  margin: 1em;
+  padding: 4em;
+  text-align: center;
+}
