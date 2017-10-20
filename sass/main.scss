@@ -4,6 +4,10 @@
 @import 'config/manifest';
 
 
+// General Fonts
+// -------------
+@include import-webfonts;
+
 :root {
   @include font-family('local');
 }
