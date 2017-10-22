@@ -11,6 +11,7 @@ const paths = {
   DIST_DIR: 'dist/',
   SASS_DIR: 'sass/',
   DOCS_DIR: 'docs/',
+  FONTS_DIR: 'fonts/',
   IGNORE: ['!**/.#*', '!**/flycheck_*'],
   init() {
     this.SASS = [`${this.SASS_DIR}**/*.scss`].concat(this.IGNORE);
@@ -41,7 +42,7 @@ gulp.task('compile', ['sass'], () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: 'herman',
+    theme: './../sassdoc-theme-herman/',
     herman: {
       subprojects: [
         'accoutrement-color',
@@ -52,10 +53,7 @@ gulp.task('compile', ['sass'], () => {
         jsonfile: `${paths.DIST_DIR}css/json.css`,
       },
       customCSS: `${paths.DIST_DIR}css/main.css`,
-      customHead:
-        '<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">' +
-        '<script src="https://use.typekit.net/slx1xnq.js"></script>' +
-        '<script>try{Typekit.load({ async: true });}catch(e){}</script>',
+      fontpath: paths.FONTS_DIR,
     },
     display: {
       alias: true,
