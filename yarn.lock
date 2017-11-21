@@ -45,9 +45,9 @@ accoutrement-scale@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/accoutrement-scale/-/accoutrement-scale-5.0.1.tgz#2e05f1bcb173df1b4f16f0f172dbd2ffe0f2a4a8"
 
-accoutrement-type@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/accoutrement-type/-/accoutrement-type-3.1.0.tgz#5306b176672cdc49fbba6cf7b719fa4d7ae65ec2"
+accoutrement-type@^3.2.0-beta.1:
+  version "3.2.0-beta.1"
+  resolved "https://registry.yarnpkg.com/accoutrement-type/-/accoutrement-type-3.2.0-beta.1.tgz#02299f7b50edb601dbb5c08221a8ab39fb0a1e8c"
 
 acorn@4.X:
   version "4.0.13"
@@ -284,7 +284,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.4.6:
+bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -3263,11 +3263,11 @@ sassdoc-theme-default@^2.6.1:
     swig "1.4.0"
     swig-extras "0.0.1"
 
-sassdoc-theme-herman@1.0.0-alpha.13:
-  version "1.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/sassdoc-theme-herman/-/sassdoc-theme-herman-1.0.0-alpha.13.tgz#8c5fc694a5cfe72ed0ae86ba2f5de521dd48bf1b"
+sassdoc-theme-herman@^1.0.0-alpha.15:
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/sassdoc-theme-herman/-/sassdoc-theme-herman-1.0.0-alpha.15.tgz#0e83a529cc0d6e54c4805b846767262b40d5c851"
   dependencies:
-    bluebird "^3.4.6"
+    bluebird "^3.5.1"
     extend "^3.0.0"
     gulp-rename "^1.2.2"
     html-minifier "^3.5.5"
@@ -3275,6 +3275,7 @@ sassdoc-theme-herman@1.0.0-alpha.13:
     node-sass "^4.5.3"
     nunjucks "^2.5.2"
     sassdoc-extras "^2.4.1"
+    strip-indent "^2.0.0"
     through2 "^2.0.1"
     tinycolor2 "^1.4.1"
     vinyl-fs "^2.4.4"
