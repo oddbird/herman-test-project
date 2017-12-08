@@ -42,7 +42,7 @@ gulp.task('compile', ['sass'], () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: './../sassdoc-theme-herman/',
+    theme: 'herman',
     herman: {
       subprojects: [
         'accoutrement-color',

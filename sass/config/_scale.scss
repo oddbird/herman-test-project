@@ -9,7 +9,7 @@ $size-fun: if(function-exists('get-function'), get-function('size'),'size');
 // Ratios
 // ------
 /// @group scale
-/// @preview ratios
+/// @ratios
 $text-scale: (
   'text-ratio': 1.4,
 );
@@ -21,7 +21,7 @@ $ratios: map-merge($ratios, $text-scale);
 // Text Sizes
 // ----------
 /// @group scale
-/// @preview sizes;
+/// @sizes;
 $text-sizes: (
   'root': 18px,
   'small': 'root' ('text-ratio': -1),

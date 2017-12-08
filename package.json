@@ -22,6 +22,6 @@
     "gulp-sourcemaps": "^2.6.1",
     "sass-json-export": "^2.0.0",
     "sassdoc": "^2.3.0",
-    "sassdoc-theme-herman": "^1.0.0-alpha.15"
+    "sassdoc-theme-herman": "1.0.0-rc.6"
   }
 }

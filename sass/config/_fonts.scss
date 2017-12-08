@@ -15,7 +15,7 @@ $font-formats: 'local' 'woff2' 'woff' 'ttf';
 /// - suppy additional html head as a nested block
 ///
 /// @group fonts
-/// @font 'typekit' (regular, italic, bold, bold italic)
+/// @font typekit (regular, italic, bold, bold italic)
 ///   <script src="https://use.typekit.net/slx1xnq.js"></script>
 ///   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 $typekit-font: (
@@ -38,7 +38,7 @@ $typekit-font: (
 /// - suppy additional html head as a nested block
 ///
 /// @group fonts
-/// @font 'google' (regular, bold, italic, bold italic)
+/// @font google (regular, bold, italic, bold italic)
 ///   <link href="https://fonts.googleapis.com/css?family=Exo+2:400,400i,700,700i" rel="stylesheet">
 $google-font: (
   'name': 'Exo 2',
@@ -61,7 +61,7 @@ $google-font: (
 /// - add a font-path global config option, similar to sass path options
 ///
 /// @group fonts
-/// @font 'local' {woff2, woff, ttf}
+/// @font local {woff2, woff, ttf}
 $local-font: (
   'name': 'rockingham',
   'regular': 'rockingham/rockingham-regular-webfont',
@@ -86,7 +86,7 @@ $local-font: (
 /// - add a font-path global config option, similar to sass path options
 ///
 /// @group fonts
-/// @font 'data'
+/// @font data
 $data-font: (
   'name': 'latoregular',
   'normal': (
