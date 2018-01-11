@@ -28,36 +28,36 @@
   </symbol>
 </svg>
 
-  <div data-sassdoc-region="app">
-    <header data-sassdoc-region="banner">
+  <div data-region="app">
+    <header data-region="banner">
       
   <button data-nav-toggle data-toggle="button" aria-controls="nav" aria-pressed="false" type="button" data-toggle-synced="false">
     
-  <svg data-icon="menu" data-icon-size="icon-small" ><title>menu</title><use xlink:href="#icon-menu" />
+  <svg data-icon="menu" data-icon-size="nav-icon" ><title>menu</title><use xlink:href="#icon-menu" />
   </svg>
 
   </button>
 
 
-      <div data-sassdoc="project-title">
-        <a href="index.html" rel="home" data-sassdoc="project-name">herman-test-project</a>
+      <div class="project-title">
+        <a href="index.html" rel="home" class="project-name">herman-test-project</a>
         
-          <span data-sassdoc="project-version">0.1.0</span>
+          <span class="project-version">0.1.0</span>
         
       </div>
     </header>
 
-    <div data-sassdoc-region="container">
+    <div data-region="container">
       
-  <nav data-nav-menu data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
+  <nav data-region="nav" data-toggle="target" id="nav" data-target-id="nav" aria-expanded="false" data-auto-closing="false" data-auto-closing-on-any-click="false">
     <form action="search.html">
       <input type="text" name="q" placeholder="Search…" required minlength="3">
     </form>
 
-    <div data-sassdoc="nav-subsection">
-      <h3 data-sassdoc="nav-title">
+    <div class="nav-subsection">
+      <h3 class="nav-title">
         
-        <a href="index.html" data-sassdoc-nav="is-not-active">herman-test-project</a>
+        <a href="index.html" data-nav="is-not-active">herman-test-project</a>
       </h3>
 
       
@@ -65,27 +65,27 @@
     </div>
 
     
-    <div data-sassdoc="nav-subsection">
+    <div class="nav-subsection">
       <ul>
         
           
-          <li data-sassdoc="nav-item">
-            <a href="color.html" data-sassdoc-nav="is-not-active">color</a>
+          <li class="nav-item">
+            <a href="color.html" data-nav="is-not-active">color</a>
           </li>
         
           
-          <li data-sassdoc="nav-item">
-            <a href="examples.html" data-sassdoc-nav="is-not-active">examples</a>
+          <li class="nav-item">
+            <a href="examples.html" data-nav="is-not-active">examples</a>
           </li>
         
           
-          <li data-sassdoc="nav-item">
-            <a href="fonts.html" data-sassdoc-nav="is-active">fonts</a>
+          <li class="nav-item">
+            <a href="fonts.html" data-nav="is-active">fonts</a>
           </li>
         
           
-          <li data-sassdoc="nav-item">
-            <a href="scale.html" data-sassdoc-nav="is-not-active">scale</a>
+          <li class="nav-item">
+            <a href="scale.html" data-nav="is-not-active">scale</a>
           </li>
         
       </ul>
@@ -119,16 +119,16 @@
   </nav>
 
 
-      <main data-sassdoc-region="main">
+      <main data-region="main">
         
-  <nav data-sassdoc-region="breadcrumb">
+  <nav class="breadcrumb">
     
     <a href="index.html" >herman-test-project</a> »
     <strong>fonts</strong>
   </nav>
 
 
-        <div data-sassdoc-page="fonts">
+        <div data-page="fonts">
           
   
     
@@ -192,7 +192,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">$typekit-font: (
+      <pre class="hljs-pre"><code class="lang-scss">$typekit-font: (
   &#39;name&#39;: &#39;freight-text-pro&#39;,
   &#39;stack&#39;: &#39;fantasy&#39;,
   &#39;source&#39;: &#39;https://typekit.com/fonts/freight-text&#39;,
@@ -302,7 +302,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">font-family: &#39;freight-text-pro&#39;, fantasy;</code></pre>
+      <pre class="hljs-pre"><code class="lang-css">font-family: &#39;freight-text-pro&#39;, fantasy;</code></pre>
     </div>
   
 
@@ -316,6 +316,7 @@
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
 
   &lt;title&gt;fonts&lt;/title&gt;
 
@@ -331,7 +332,7 @@
 
   
 &lt;/head&gt;
-&lt;body class=&quot;sassdoc&quot;&gt;
+&lt;body class=&quot;sassdoc font-specimen&quot;&gt;
   
   
 
@@ -612,7 +613,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">$google-font: (
+      <pre class="hljs-pre"><code class="lang-scss">$google-font: (
   &#39;name&#39;: &#39;Exo 2&#39;,
   &#39;source&#39;: &#39;https://fonts.google.com/specimen/Exo+2&#39;,
   &#39;stack&#39;: (&#39;arial&#39;, &#39;monospace&#39;, &#39;fantasy&#39;),
@@ -721,7 +722,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">font-family: &#39;Exo 2&#39;, &#39;arial&#39;, monospace, fantasy;</code></pre>
+      <pre class="hljs-pre"><code class="lang-css">font-family: &#39;Exo 2&#39;, &#39;arial&#39;, monospace, fantasy;</code></pre>
     </div>
   
 
@@ -735,6 +736,7 @@
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
 
   &lt;title&gt;fonts&lt;/title&gt;
 
@@ -749,7 +751,7 @@
 
   
 &lt;/head&gt;
-&lt;body class=&quot;sassdoc&quot;&gt;
+&lt;body class=&quot;sassdoc font-specimen&quot;&gt;
   
   
 
@@ -1030,7 +1032,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">$local-font: (
+      <pre class="hljs-pre"><code class="lang-scss">$local-font: (
   &#39;name&#39;: &#39;rockingham&#39;,
   &#39;regular&#39;: &#39;rockingham/rockingham-regular-webfont&#39;,
   &#39;bold&#39;: &#39;rockingham/rockingham-bold-webfont&#39;,
@@ -1144,7 +1146,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">font-family: &#39;rockingham&#39;, fantasy;</code></pre>
+      <pre class="hljs-pre"><code class="lang-css">font-family: &#39;rockingham&#39;, fantasy;</code></pre>
     </div>
   
 
@@ -1158,6 +1160,7 @@
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
 
   &lt;title&gt;fonts&lt;/title&gt;
 
@@ -1201,7 +1204,7 @@
     &lt;/style&gt;
   
 &lt;/head&gt;
-&lt;body class=&quot;sassdoc&quot;&gt;
+&lt;body class=&quot;sassdoc font-specimen&quot;&gt;
   
   
 
@@ -1528,7 +1531,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-scss">$data-font: (
+      <pre class="hljs-pre"><code class="lang-scss">$data-font: (
   &#39;name&#39;: &#39;latoregular&#39;,
   &#39;normal&#39;: (
     &#39;woff&#39;: &#39;data:application/x-font-woff;</code></pre>
@@ -1638,7 +1641,7 @@
 
       
       
-      <pre data-sassdoc="hljs"><code class="lang-css">font-family: &#39;latoregular&#39;, fantasy;</code></pre>
+      <pre class="hljs-pre"><code class="lang-css">font-family: &#39;latoregular&#39;, fantasy;</code></pre>
     </div>
   
 
@@ -1652,6 +1655,7 @@
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;base target=&quot;_parent&quot;&gt;
 
   &lt;title&gt;fonts&lt;/title&gt;
 
@@ -1663,7 +1667,7 @@
 
   
 &lt;/head&gt;
-&lt;body class=&quot;sassdoc&quot;&gt;
+&lt;body class=&quot;sassdoc font-specimen&quot;&gt;
   
   
 
