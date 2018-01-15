@@ -42,12 +42,21 @@ gulp.task('sassdoc', () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: 'herman',
+    theme: './../sassdoc-theme-herman/',
     herman: {
-      subprojects: [
-        'accoutrement-color',
-        'accoutrement-scale',
-        'accoutrement-type',
+      extraLinks: [
+        {
+          name: 'Accoutrement-Color',
+          url: 'http://oddbird.net/accoutrement-color/',
+        },
+        {
+          name: 'Accoutrement-Scale',
+          url: 'http://oddbird.net/accoutrement-scale/',
+        },
+        {
+          name: 'Accoutrement-Type',
+          url: 'http://oddbird.net/accoutrement-type/',
+        },
       ],
       sass: {
         jsonfile: `${paths.DIST_DIR}css/json.css`,

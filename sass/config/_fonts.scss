@@ -3,7 +3,6 @@
 
 
 $font-path: '../../fonts/';
-$font-formats: 'local' 'woff2' 'woff' 'ttf';
 
 
 // TypeKit Font
@@ -22,7 +21,6 @@ $typekit-font: (
   'name': 'freight-text-pro',
   'stack': 'fantasy',
   'source': 'https://typekit.com/fonts/freight-text',
-  'local': 'Freight Text Pro' 'freight-text-pro',
 );
 
 @include add-font('typekit', $typekit-font);
@@ -55,20 +53,24 @@ $google-font: (
 /// A locally-hosted font.
 ///
 /// - call the specimen preview directly
-/// - give a font-name and bracketed list of formats on the first line
+/// - give a font-name on the first line
 /// - optionally override variants with parenthetical list
 /// - no additional html head
 /// - add a font-path global config option, similar to sass path options
 ///
 /// @group fonts
-/// @font local {woff2, woff, ttf}
+/// @font local
 $local-font: (
   'name': 'rockingham',
-  'regular': 'rockingham/rockingham-regular-webfont',
+  'regular': (
+    'path': 'rockingham/rockingham-regular-webfont',
+    'local': 'rockingham-regular-webfont',
+  ),
   'bold': 'rockingham/rockingham-bold-webfont',
   'italic': 'rockingham/rockingham-italic-webfont',
   'bold' 'italic': 'rockingham/rockingham-bolditalic-webfont',
   'stack': 'fantasy',
+  'formats': 'woff2' 'woff' 'ttf',
 );
 
 @include add-font('local', $local-font);
@@ -80,7 +82,7 @@ $local-font: (
 /// An embedded data-uri font.
 ///
 /// - call the specimen preview directly
-/// - give a font-name and optional bracketed list of formats on the first line
+/// - give a font-name on the first line
 /// - optionally override variants with parenthetical list
 /// - no additional html head
 /// - add a font-path global config option, similar to sass path options
