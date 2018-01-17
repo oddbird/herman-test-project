@@ -4913,10 +4913,6 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-json-export@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/sass-json-export/-/sass-json-export-2.0.0.tgz#3cb85391ae8de9008a7841476d601b8d6ba1141e"
-
 sassdoc-extras@^2.4.0, sassdoc-extras@^2.4.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/sassdoc-extras/-/sassdoc-extras-2.4.2.tgz#4db977792a3e88eab37827771b085dfc4bf7fe89"
