@@ -49,9 +49,9 @@ accoutrement-scale@^5.0.1:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/accoutrement-scale/-/accoutrement-scale-5.0.2.tgz#2589252f8fd1eaf579a7d9f72343e81efe08259c"
 
-accoutrement-type@^3.2.0-beta.2:
-  version "3.2.0-beta.2"
-  resolved "https://registry.yarnpkg.com/accoutrement-type/-/accoutrement-type-3.2.0-beta.2.tgz#bfc4ec9a32edc6b07ee4bf2477e06092d1d3d236"
+accoutrement-type@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/accoutrement-type/-/accoutrement-type-4.0.0.tgz#107c88ea279e97623744d4ff143d08e245a135ed"
 
 acorn@5.X, acorn@^5.0.3:
   version "5.3.0"
