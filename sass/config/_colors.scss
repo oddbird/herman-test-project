@@ -8,7 +8,7 @@ $color-fun: if(function-exists('get-function'), get-function('color'), 'color');
 // Brand Colors
 // ------------
 /// @group color
-/// @preview color-palette
+/// @colors
 $brand-colors: (
   'brand-blue': hsl(195, 52%, 31%),
   'brand-orange': hsl(24, 100%, 62%),

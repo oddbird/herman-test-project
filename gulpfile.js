@@ -38,16 +38,25 @@ gulp.task('sass', () =>
 
 // SassDoc compilation.
 // See: http://sassdoc.com/customising-the-view/
-gulp.task('compile', ['sass'], () => {
+gulp.task('sassdoc', () => {
   const config = {
     verbose: true,
     dest: paths.DOCS_DIR,
-    theme: './../sassdoc-theme-herman/',
+    theme: 'herman',
     herman: {
-      subprojects: [
-        'accoutrement-color',
-        'accoutrement-scale',
-        'accoutrement-type',
+      extraLinks: [
+        {
+          name: 'Accoutrement-Color',
+          url: 'http://oddbird.net/accoutrement-color/',
+        },
+        {
+          name: 'Accoutrement-Scale',
+          url: 'http://oddbird.net/accoutrement-scale/',
+        },
+        {
+          name: 'Accoutrement-Type',
+          url: 'http://oddbird.net/accoutrement-type/',
+        },
       ],
       sass: {
         jsonfile: `${paths.DIST_DIR}css/json.css`,
@@ -60,12 +69,18 @@ gulp.task('compile', ['sass'], () => {
     },
   };
 
-  return gulp
+  const stream = sassdoc(config);
+
+  gulp
     .src(`${paths.SASS_DIR}**/*.scss`)
-    .pipe(sassdoc(config));
+    .pipe(stream);
+
+  return stream.promise;
 });
 
-gulp.task('browser-sync', ['compile'], cb => {
+gulp.task('compile', gulp.series('sass', 'sassdoc'));
+
+gulp.task('serve', gulp.series('compile', cb => {
   browserSync.init(
     {
       open: false,
@@ -86,7 +101,6 @@ gulp.task('browser-sync', ['compile'], cb => {
     },
     cb
   );
-});
+}));
 
-gulp.task('default', ['compile']);
-gulp.task('serve', ['browser-sync']);
+gulp.task('default', gulp.parallel('compile'));
