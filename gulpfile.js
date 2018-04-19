@@ -1,23 +1,19 @@
+/* eslint-disable no-console */
+
 'use strict';
 
 const browserSync = require('browser-sync').create();
+const eslint = require('gulp-eslint');
 const gulp = require('gulp');
-const sass = require('gulp-sass');
-const sassdoc = require('sassdoc');
-const sourcemaps = require('gulp-sourcemaps');
+const prettier = require('gulp-prettier-plugin');
+const webpack = require('webpack');
 
 // Theme and project specific paths.
 const paths = {
   DIST_DIR: 'dist/',
-  SASS_DIR: 'sass/',
-  DOCS_DIR: 'docs/',
-  FONTS_DIR: 'fonts/',
-  IGNORE: ['!**/.#*', '!**/flycheck_*'],
-  init() {
-    this.SASS = [`${this.SASS_DIR}**/*.scss`].concat(this.IGNORE);
-    return this;
-  },
-}.init();
+  SASS: 'sass/**/*.scss',
+  JS: ['src/**/*.{js,vue}', '*.js', '.*.js'],
+};
 
 // Try to ensure that all processes are killed on exit
 const spawned = [];
@@ -27,71 +23,112 @@ process.on('exit', () => {
   });
 });
 
-gulp.task('sass', () =>
-  gulp
-    .src(paths.SASS)
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'compressed' }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(`${paths.DIST_DIR}css/`))
+const onError = function(err) {
+  console.error(err.message);
+  this.emit('end');
+};
+
+const eslintTask = (src, failOnError, shouldLog) => {
+  if (shouldLog) {
+    const cmd = `eslint ${src}`;
+    console.log('Running', `'${cmd}'...`);
+  }
+  const stream = gulp
+    .src(src)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+  if (!failOnError) {
+    stream.on('error', onError);
+  }
+  return stream;
+};
+
+const prettierTask = (src, shouldLog) => {
+  if (shouldLog) {
+    const cmd = `prettier ${src}`;
+    console.log('Running', `'${cmd}'...`);
+  }
+  return gulp
+    .src(src, { base: './' })
+    .pipe(prettier({ singleQuote: true, trailingComma: 'all' }))
+    .pipe(gulp.dest('./'))
+    .on('error', onError);
+};
+
+gulp.task('prettier-js', () => prettierTask(paths.JS));
+gulp.task('prettier-scss', () => prettierTask(paths.SASS));
+gulp.task('prettier', gulp.parallel('prettier-js', 'prettier-scss'));
+
+gulp.task(
+  'eslint',
+  gulp.series('prettier-js', () => eslintTask(paths.JS, true)),
 );
 
-// SassDoc compilation.
-// See: http://sassdoc.com/customising-the-view/
-gulp.task('sassdoc', () => {
-  const config = {
-    verbose: true,
-    dest: paths.DOCS_DIR,
-    theme: 'herman',
-    herman: {
-      extraLinks: [
-        {
-          name: 'Accoutrement-Color',
-          url: 'http://oddbird.net/accoutrement-color/',
-        },
-        {
-          name: 'Accoutrement-Scale',
-          url: 'http://oddbird.net/accoutrement-scale/',
-        },
-        {
-          name: 'Accoutrement-Type',
-          url: 'http://oddbird.net/accoutrement-type/',
-        },
-      ],
-      sass: {
-        jsonfile: `${paths.DIST_DIR}css/json.css`,
-      },
-      customCSS: `${paths.DIST_DIR}css/main.css`,
-      fontpath: paths.FONTS_DIR,
-    },
-    display: {
-      alias: true,
-    },
-  };
+gulp.task('eslint-nofail', () => eslintTask(paths.JS));
 
-  const stream = sassdoc(config);
+const webpackOnBuild = done => (err, stats) => {
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+  }
 
-  gulp
-    .src(`${paths.SASS_DIR}**/*.scss`)
-    .pipe(stream);
+  console.log(
+    stats.toString({
+      colors: true,
+      chunks: false,
+    }),
+  );
 
-  return stream.promise;
+  if (done) {
+    done(err);
+  }
+};
+
+gulp.task('webpack', cb => {
+  const webpackConfig = require('./webpack.config');
+  webpack(webpackConfig).run(webpackOnBuild(cb));
 });
 
-gulp.task('compile', gulp.series('sass', 'sassdoc'));
+gulp.task('webpack-watch', cb => {
+  const webpackConfig = require('./webpack.config');
+  webpack(webpackConfig).watch(300, webpackOnBuild(cb));
+});
 
-gulp.task('serve', gulp.series('compile', cb => {
+gulp.task(
+  'watch',
+  gulp.series('webpack-watch', cb => {
+    // lint js on changes
+    gulp.watch(paths.JS).on('all', (event, filepath) => {
+      if (event === 'add' || event === 'change') {
+        eslintTask(filepath, false, true);
+      }
+    });
+
+    // lint all js when rules change
+    gulp.watch('**/.eslintrc.yml', gulp.parallel('eslint-nofail'));
+
+    // run webpack to compile static assets
+    gulp.watch(['./index.html', './README.md'], gulp.parallel('webpack'));
+
+    cb();
+  }),
+);
+
+gulp.task('browser-sync', cb => {
   browserSync.init(
     {
       open: false,
       server: {
-        baseDir: paths.DOCS_DIR,
+        baseDir: paths.DIST_DIR,
       },
       logLevel: 'info',
       logPrefix: 'herman-test',
       notify: false,
       ghostMode: false,
-      files: [`${paths.DOCS_DIR}**/*`],
+      files: [`${paths.DIST_DIR}**/*`],
       reloadDelay: 300,
       reloadThrottle: 500,
       // Because we're debouncing, we always want to reload the page to prevent
@@ -99,8 +136,12 @@ gulp.task('serve', gulp.series('compile', cb => {
       // subsequent JS/HTML changes are ignored.
       injectChanges: false,
     },
-    cb
+    cb,
   );
-}));
+});
 
-gulp.task('default', gulp.parallel('compile'));
+gulp.task('serve', gulp.parallel('watch', 'browser-sync'));
+
+gulp.task('quick-serve', gulp.parallel('webpack', 'browser-sync'));
+
+gulp.task('default', gulp.series('prettier', 'webpack'));

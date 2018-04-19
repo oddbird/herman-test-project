@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="author" content="OddBird LLC" />
+  <meta name="language" content="en-us" />
   <title>Herman Test Project</title>
+  <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.css.css %>" type="text/css">
 </head>
 <body>
   <h1>Herman Test Project</h1>
-  <p>See the SassDoc Output for details…</p>
+  <a href="/docs">Read the Docs</a>
+  <div id="app">Loading…</div>
+  <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>

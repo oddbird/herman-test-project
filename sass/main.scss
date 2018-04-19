@@ -3,15 +3,14 @@
 
 @import 'config/manifest';
 
-
 // General Fonts
 // -------------
 @include import-webfonts;
 
 :root {
   @include font-family('local');
+  text-align: center;
 }
-
 
 // My Widget
 // ---------
@@ -22,7 +21,7 @@
 ///   <div class="my-widget">This is MY Widget</div>
 .my-widget {
   @include font-family('google');
-  background: color('brand-blue') url(../../images/wash.jpg) no-repeat;
+  background: color('brand-blue') url(../images/wash.jpg) no-repeat;
   color: contrast('brand-blue');
   margin: 1em;
   padding: 4em;
@@ -30,5 +29,6 @@
 }
 
 .your-widget {
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Polka_dots.svg/1200px-Polka_dots.svg.png') no-repeat;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Polka_dots.svg/1200px-Polka_dots.svg.png')
+    no-repeat;
 }

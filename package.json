@@ -1,26 +1,72 @@
 {
   "name": "herman-test-project",
   "version": "0.1.0",
+  "private": true,
   "description": "a test project for sassdoc-theme-herman",
   "repository": {
     "type": "git",
     "url": "https://github.com/oddbird/herman-test-project.git"
   },
-  "author": "oddbird <birds@oddbird.net>",
+  "author": "OddBird <birds@oddbird.net>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/oddbird/herman-test-project/issues"
   },
   "homepage": "https://github.com/oddbird/herman-test-project#readme",
   "devDependencies": {
-    "accoutrement-color": "^2.2.2",
-    "accoutrement-scale": "^5.0.1",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/polyfill": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "accoutrement-color": "^2.3.1",
+    "accoutrement-scale": "^6.0.0",
     "accoutrement-type": "^4.0.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.0-beta.2",
     "browser-sync": "^2.18.13",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.5.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
     "gulp": "^4.0.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
+    "gulp-eslint": "^4.0.2",
+    "gulp-prettier-plugin": "^1.3.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
+    "img-loader": "^2.0.1",
+    "lint-staged": "^7.0.4",
+    "lodash.set": "^4.3.2",
+    "node-sass": "^4.8.3",
+    "prettier": "^1.12.1",
+    "sass-loader": "^7.0.1",
     "sassdoc": "^2.5.0",
-    "sassdoc-theme-herman": "2.0.0"
+    "sassdoc-theme-herman": "^3.0.0",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^4.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
