@@ -42,6 +42,7 @@
     "lodash.set": "^4.3.2",
     "node-sass": "^4.8.3",
     "prettier": "^1.12.1",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^7.0.1",
     "sassdoc": "^2.5.0",
     "sassdoc-theme-herman": "^3.0.0",
