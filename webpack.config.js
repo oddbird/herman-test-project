@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const extractAppCSS = new ExtractTextPlugin(styleOutput);
 const extractDocCSS = new ExtractTextPlugin(styleOutput);
+const extractComponentDesc = new ExtractTextPlugin('component-docs.md');
 const sassdocPath = path.join(outputPath, 'docs');
 
 const sassDocOpts = {
@@ -85,6 +86,7 @@ module.exports = {
     }),
     extractAppCSS,
     extractDocCSS,
+    extractComponentDesc,
     new SassDocPlugin(sassDocOpts, {
       assetPaths: [
         { entry: 'docs', optPath: 'herman.customCSS' },
@@ -119,6 +121,11 @@ module.exports = {
         use: [
           {
             loader: 'vue-loader',
+            options: {
+              loaders: {
+                description: extractComponentDesc.extract('raw-loader'),
+              },
+            },
           },
         ],
       },
