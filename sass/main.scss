@@ -22,7 +22,7 @@
 ///   <div class="my-widget">This is MY Widget</div>
 .my-widget {
   @include font-family('google');
-  background: color('brand-blue') url(../../images/wash.jpg) no-repeat;
+  background: color('brand-blue') url(../images/wash.jpg) no-repeat;
   color: contrast('brand-blue');
   margin: 1em;
   padding: 4em;
