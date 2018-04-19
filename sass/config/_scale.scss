@@ -1,22 +1,17 @@
 // Scales
 // ======
 
-
-$ratio-fun: if(function-exists('get-function'), get-function('ratio'),'ratio');
-$size-fun: if(function-exists('get-function'), get-function('size'),'size');
-
+$ratio-fun: if(function-exists('get-function'), get-function('ratio'), 'ratio');
+$size-fun: if(function-exists('get-function'), get-function('size'), 'size');
 
 // Ratios
 // ------
 /// @group scale
 /// @ratios
-$text-scale: (
-  'text-ratio': 1.4,
-);
+$text-scale: ('text-ratio': 1.4);
 
 $ratios: map-merge($ratios, $text-scale);
 @include herman-add('ratios', 'text-scale', $text-scale, $ratio-fun);
-
 
 // Text Sizes
 // ----------
@@ -28,7 +23,7 @@ $text-sizes: (
   'medium': 'root' ('text-ratio': 0.7),
   'caption': 'root',
   'task': 'root' ('text-ratio': -0.125),
-  'social': 'root' ('text-ratio': -0.25),
+  'social': 'root' ('text-ratio': -0.25)
 );
 
 $sizes: map-merge($sizes, $text-sizes);

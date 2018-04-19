@@ -1,13 +1,18 @@
+/* eslint-disable no-console */
+
 'use strict';
 
 const browserSync = require('browser-sync').create();
+const eslint = require('gulp-eslint');
 const gulp = require('gulp');
+const prettier = require('gulp-prettier-plugin');
 const webpack = require('webpack');
 
 // Theme and project specific paths.
 const paths = {
   DIST_DIR: 'dist/',
-  SASS_DIR: 'sass/',
+  SASS: 'sass/**/*.scss',
+  JS: ['src/**/*.{js,vue}', '*.js', '.*.js'],
 };
 
 // Try to ensure that all processes are killed on exit
@@ -17,6 +22,50 @@ process.on('exit', () => {
     pcs.kill();
   });
 });
+
+const onError = function(err) {
+  console.error(err.message);
+  this.emit('end');
+};
+
+const eslintTask = (src, failOnError, shouldLog) => {
+  if (shouldLog) {
+    const cmd = `eslint ${src}`;
+    console.log('Running', `'${cmd}'...`);
+  }
+  const stream = gulp
+    .src(src)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+  if (!failOnError) {
+    stream.on('error', onError);
+  }
+  return stream;
+};
+
+const prettierTask = (src, shouldLog) => {
+  if (shouldLog) {
+    const cmd = `prettier ${src}`;
+    console.log('Running', `'${cmd}'...`);
+  }
+  return gulp
+    .src(src, { base: './' })
+    .pipe(prettier({ singleQuote: true, trailingComma: 'all' }))
+    .pipe(gulp.dest('./'))
+    .on('error', onError);
+};
+
+gulp.task('prettier-js', () => prettierTask(paths.JS));
+gulp.task('prettier-scss', () => prettierTask(paths.SASS));
+gulp.task('prettier', gulp.parallel('prettier-js', 'prettier-scss'));
+
+gulp.task(
+  'eslint',
+  gulp.series('prettier-js', () => eslintTask(paths.JS, true)),
+);
+
+gulp.task('eslint-nofail', () => eslintTask(paths.JS));
 
 const webpackOnBuild = done => (err, stats) => {
   if (err) {
@@ -38,15 +87,37 @@ const webpackOnBuild = done => (err, stats) => {
   }
 };
 
+gulp.task('webpack', cb => {
+  const webpackConfig = require('./webpack.config');
+  webpack(webpackConfig).run(webpackOnBuild(cb));
+});
+
+gulp.task('webpack-watch', cb => {
+  const webpackConfig = require('./webpack.config');
+  webpack(webpackConfig).watch(300, webpackOnBuild(cb));
+});
+
 gulp.task(
-  'webpack',
-  gulp.parallel(cb => {
-    const webpackConfig = require('./webpack.config');
-    webpack(webpackConfig).run(webpackOnBuild(cb));
+  'watch',
+  gulp.series('webpack-watch', cb => {
+    // lint js on changes
+    gulp.watch(paths.JS).on('all', (event, filepath) => {
+      if (event === 'add' || event === 'change') {
+        eslintTask(filepath, false, true);
+      }
+    });
+
+    // lint all js when rules change
+    gulp.watch('**/.eslintrc.yml', gulp.parallel('eslint-nofail'));
+
+    // run webpack to compile static assets
+    gulp.watch(['./index.html', './README.md'], gulp.parallel('webpack'));
+
+    cb();
   }),
 );
 
-gulp.task('serve', gulp.series('webpack', cb => {
+gulp.task('browser-sync', cb => {
   browserSync.init(
     {
       open: false,
@@ -65,8 +136,12 @@ gulp.task('serve', gulp.series('webpack', cb => {
       // subsequent JS/HTML changes are ignored.
       injectChanges: false,
     },
-    cb
+    cb,
   );
-}));
+});
 
-gulp.task('default', gulp.parallel('webpack'));
+gulp.task('serve', gulp.parallel('watch', 'browser-sync'));
+
+gulp.task('quick-serve', gulp.parallel('webpack', 'browser-sync'));
+
+gulp.task('default', gulp.series('prettier', 'webpack'));

@@ -3,7 +3,6 @@
 
 @import 'config/manifest';
 
-
 // General Fonts
 // -------------
 @include import-webfonts;
@@ -11,7 +10,6 @@
 :root {
   @include font-family('local');
 }
-
 
 // My Widget
 // ---------
@@ -30,5 +28,6 @@
 }
 
 .your-widget {
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Polka_dots.svg/1200px-Polka_dots.svg.png') no-repeat;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Polka_dots.svg/1200px-Polka_dots.svg.png')
+    no-repeat;
 }
