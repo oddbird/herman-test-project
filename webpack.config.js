@@ -99,6 +99,7 @@ module.exports = {
     // generate dynamic base template
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
+      favicon: path.join(__dirname, 'images', 'favicon.ico'),
       inject: false,
     }),
   ],
